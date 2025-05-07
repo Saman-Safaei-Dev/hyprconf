@@ -1,0 +1,97 @@
+{
+  "layer": "top",
+  "position": "top",
+  "output": ["HDMI-A-1", "eDP-1"],
+  "modules-right": [
+    "backlight",
+    "pulseaudio",
+    "battery",
+    "clock",
+    "power-profiles-daemon",
+    "custom/logout",
+    "custom/lock",
+    "custom/poweroff"
+  ],
+  "modules-left": [
+    "custom/arch", 
+    "hyprland/workspaces", 
+    "tray", 
+    "hyprland/window"
+  ],
+  "custom/lock": {
+    "tooltip": false,
+    "interval": "once",
+    "on-click": "pidof hyprlock || hyprlock",
+    "format": "\uf023"
+  },
+  "custom/logout": {
+    "tooltip": false,
+    "interval": "once",
+    "on-click": "uwsm stop",
+    "format": ""
+  },
+  "custom/poweroff": {
+    "tooltip": false,
+    "interval": "once",
+    "on-click": "shutdown -h now",
+    "format": "\uf011"
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size": 14
+  },
+  "clock": {
+    "format": "{:%H:%M} ",
+    "format-alt": "{:%B %d, %Y}",
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 60,
+    "format": "{capacity}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "backlight": {
+    "interval": 20,
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["\ue3dc"]
+   },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "\udb80\udf2a"
+    }
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "Muted {icon}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ""
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+  },
+  "custom/arch": {
+    "tooltip": false,
+    "interval": "once",
+    "format": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "style-project",
+  "type": "module",
+  "license": "Zlib",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Saman-Safaei-Dev",
+  "description": "a simple scss project for my waybar",
+  "scripts": {
+    "dev": "sass --watch ./src/main.scss ../style.css"
+  },
+  "keywords": [
+    "scss",
+    "waybar"
+  ],
+  "dependencies": {
+    "sass": "^1.87.0"
+  }
+}

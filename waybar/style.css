@@ -1,0 +1,141 @@
+* {
+  min-height: 22px;
+  font-size: 12px;
+  font-family: "MonaspiceRn Nerd Font Propo";
+}
+
+tooltip {
+  border-radius: 8px;
+  background-color: rgba(30, 30, 46, 0.9);
+  border: 1px solid rgba(49, 50, 68, 0.9);
+}
+
+tooltip,
+tooltip *,
+separator {
+  min-height: 0;
+}
+
+tooltip label {
+  color: #cdd6f4;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+menu {
+  padding: 8px;
+  color: #cdd6f4;
+  background: rgba(30, 30, 46, 0.9);
+  border-radius: 8px;
+}
+
+separator {
+  background: rgba(49, 50, 68, 0.9);
+}
+
+window#waybar {
+  background: transparent;
+}
+window#waybar > box {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 12px;
+  padding-left: 0;
+  padding-right: 0;
+  background: rgba(30, 30, 46, 0.8);
+  border-radius: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+window#waybar > box #workspaces {
+  padding: 2px;
+  border-radius: 8px;
+  margin-left: 4px;
+  background: rgba(203, 166, 247, 0.9);
+}
+window#waybar > box #workspaces button {
+  padding: 0;
+  color: #1e1e2e;
+  font-weight: 700;
+  border-radius: 6px;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+window#waybar > box #workspaces button.active {
+  color: #cdd6f4;
+  background: #313244;
+}
+window#waybar > box #tray,
+window#waybar > box #clock,
+window#waybar > box #window,
+window#waybar > box #battery,
+window#waybar > box #pulseaudio,
+window#waybar > box #backlight {
+  color: #cdd6f4;
+}
+window#waybar > box #custom-arch {
+  color: #89dceb;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+  background: rgba(49, 50, 68, 0.9);
+}
+window#waybar > box #tray {
+  margin-left: 4px;
+  background: rgba(49, 50, 68, 0.9);
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+window#waybar > box #window {
+  margin-left: 14px;
+  font-weight: 700;
+}
+window#waybar > box #custom-lock,
+window#waybar > box #custom-logout,
+window#waybar > box #custom-poweroff,
+window#waybar > box #power-profiles-daemon {
+  color: #1e1e2e;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+window#waybar > box #custom-lock,
+window#waybar > box #custom-logout,
+window#waybar > box #custom-poweroff {
+  padding: 0 9px;
+}
+window#waybar > box #custom-poweroff {
+  background: rgba(243, 139, 168, 0.9);
+  margin-right: 6px;
+}
+window#waybar > box #custom-lock {
+  background: rgba(137, 180, 250, 0.9);
+}
+window#waybar > box #custom-logout {
+  background: rgba(235, 160, 172, 0.9);
+}
+window#waybar > box #power-profiles-daemon.power-saver {
+  background: rgba(166, 227, 161, 0.9);
+  padding: 0 10px;
+}
+window#waybar > box #power-profiles-daemon.balanced {
+  background: rgba(137, 220, 235, 0.9);
+  padding: 0 8px;
+}
+window#waybar > box #power-profiles-daemon.performance {
+  background: rgba(249, 226, 175, 0.9);
+  padding: 0 11px;
+}
+window#waybar > box #clock,
+window#waybar > box #battery,
+window#waybar > box #backlight,
+window#waybar > box #pulseaudio {
+  background: rgba(49, 50, 68, 0.9);
+  margin-right: 4px;
+  border-radius: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/*# sourceMappingURL=style.css.map */
