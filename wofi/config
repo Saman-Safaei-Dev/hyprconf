@@ -1,6 +1,6 @@
 show=drun
-width=450
-height=550
+width=350
+height=700
 always_parse_args=true
 show_all=false
 hide_scroll=true
@@ -9,5 +9,5 @@ print_command=true
 insensitive=true
 prompt=Launch:
 columns=1
-allow_images=true
+allow_images=false
 no_actions=true
