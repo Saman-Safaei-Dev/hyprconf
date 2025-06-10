@@ -1,0 +1,12 @@
+{
+  "name": "hyprland-scripts",
+  "version": "1.0.0",
+  "description": "My scripts for hyprland",
+  "private": true,
+  "author": "Saman-Safaei-Dev",
+  "license": "Zlib",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.15.21"
+  }
+}

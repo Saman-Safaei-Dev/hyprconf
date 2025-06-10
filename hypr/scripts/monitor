@@ -1,0 +1,10 @@
+#!/bin/node
+import { execSync } from "child_process";
+
+const monitors = JSON.parse(execSync("hyprctl -j monitors").toString().trim());
+
+if (monitors.length > 1) {
+  execSync("hyprctl keyword monitor eDP-1,disable");
+  execSync("hyprctl dispatch workspace 1");
+}
+

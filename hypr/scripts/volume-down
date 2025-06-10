@@ -1,0 +1,16 @@
+import { execSync } from "child_process";
+
+execSync("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-");
+
+const volume = Math.floor(
+  Number(
+    execSync("wpctl get-volume @DEFAULT_AUDIO_SINK@")
+      .toString()
+      .trim()
+      .split(" ")[1],
+  ) * 100,
+);
+
+execSync(`eww update volume=${volume}`)
+
+
