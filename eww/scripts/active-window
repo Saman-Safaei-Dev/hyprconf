@@ -1,0 +1,29 @@
+#!/bin/node
+
+import { spawn } from "node:child_process";
+
+const env = {
+  ...process.env,
+  XDG_RUNTIME_DIR: process.env.XDG_RUNTIME_DIR,
+  HYPRLAND_INSTANCE_SIGNATURE: process.env.HYPRLAND_INSTANCE_SIGNATURE,
+};
+
+const socketPath = `${env.XDG_RUNTIME_DIR}/hypr/${env.HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock`;
+
+const socat = spawn("/bin/socat", ["-u", `UNIX-CONNECT:${socketPath}`, "-"], {
+  env,
+});
+
+socat.stdout.on("data", (data) => {
+  const lines = data
+    .toString()
+    .split("\n")
+    .filter((line) => !!line.trim());
+
+  const windowLine = lines.find((line) => line.startsWith("activewindow>>"));
+  if (!windowLine) return;
+  let windowName = windowLine.split(">>")[1].split(",")[1];
+  if (windowName.length >= 40) windowName = windowName.slice(0, 40) + "...";
+
+  console.log(windowName || "Hyprland");
+});

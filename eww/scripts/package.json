@@ -1,0 +1,13 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "Simple scripts for my eww bar",
+  "private": true,
+  "keywords": [],
+  "author": "Saman-Safaei-Dev",
+  "license": "Zlib",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.15.19"
+  }
+}

@@ -1,0 +1,163 @@
+$primary: #c6a0f6;
+$base: #24273a;
+$red: #ed8796;
+$text: #cad3f5;
+$sky: #91d7e3;
+$mauve: #c6a0f6;
+$yellow: #eed49f;
+$surface0: #363a4f;
+
+$pads: 8px;
+$pads-lg: 12px;
+
+* {
+  min-width: 0;
+  min-height: 0;
+  font-size: 12px;
+  font-family: "MonaspiceRn Nerd Font Propo", sans-serif;
+}
+
+window.topbar {
+  background: transparent;
+}
+
+.container {
+  padding: 0 $pads-lg;
+}
+
+// Menus ----------------------------------------------------------------------
+
+menu {
+  padding: 8px 6px;
+  border-radius: 12px;
+  background: rgba($base, 0.9);
+}
+
+separator {
+  margin: 4px 0;
+  min-height: 1px;
+  background: $surface0;
+}
+
+menuitem {
+  padding: 8px 0;
+  border-radius: 8px;
+  color: $text;
+  background: transparent;
+}
+
+menuitem:hover {
+  background: $primary;
+  color: $base;
+}
+
+// Actions --------------------------------------------------------------------
+
+box.action-container {
+  background: $base;
+  border-radius: 8px;
+}
+button.action {
+  border: none;
+  background: $base;
+  min-width: 14px;
+  border-radius: 8px;
+}
+button.volume {
+  color: $text;
+}
+button.poweroff {
+  color: $red;
+  margin-left: 4px;
+}
+button.logout {
+  color: $yellow;
+  margin-left: 4px;
+}
+button.sleep {
+  color: $sky;
+}
+button.lock {
+  color: $mauve;
+}
+
+.slider-scale {
+  margin : 0;
+  padding-left: 0;
+}
+
+.slider-scale trough {
+  min-height: 4px;
+  border: none;
+  background: $surface0;
+}
+
+.slider-scale highlight {
+  background: $primary;
+  border: none;
+}
+
+.slider-scale slider {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+// Workspaces -----------------------------------------------------------------
+
+.workspaces {
+  min-width: 0;
+  background: $base;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+button.ws {
+  color: $text;
+  border: none;
+  padding: 0 8px;
+  border-radius: 5px;
+  background: transparent;
+}
+
+button.active {
+  color: $base;
+  background: $primary;
+}
+
+// Time -----------------------------------------------------------------------
+
+label.time {
+  color: $text;
+  padding: 0 $pads;
+  background: $base;
+  border-radius: 8px;
+  margin-left: 4px;
+}
+
+// Window Title ---------------------------------------------------------------
+
+label.win-title {
+  color: $text;
+  padding: 0 $pads-lg;
+  background: $base;
+  border-radius: 8px;
+}
+
+// Battery --------------------------------------------------------------------
+
+label.battery {
+  color: $text;
+  padding: 0 $pads;
+  background: $base;
+  border-radius: 8px;
+  margin-left: 4px;
+}
+
+// Tray Icons -----------------------------------------------------------------
+
+.trayicons {
+  background: $base;
+  border-radius: 8px;
+  padding: 0 $pads-lg;
+}

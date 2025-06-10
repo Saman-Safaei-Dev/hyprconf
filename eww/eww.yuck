@@ -1,0 +1,72 @@
+(deflisten workspaces :initial "[]"
+  `scripts/workspaces`)
+(deflisten currentWindowTitle :initial "Hyprland"
+  `scripts/active-window`)
+(defpoll time :interval "10s" :initial "00:00" 
+  `date +%H:%M`)
+(defpoll volume :interval "2s" :initial "0"
+  `scripts/get-volume`)
+
+(defvar showOp false)
+(defvar showVolume false)
+
+(defwidget workspaces []
+  (box :orientation "horizontal"
+       :halign "start"
+       :spacing "0"
+       :space-evenly false
+       :class "workspaces"
+    (for workspace in workspaces
+      (button :onclick "scripts/set-workspace ${workspace.id}"
+        :class "ws ${workspace.active ? 'active' : ''}"
+        "${workspace.name}"))))
+
+(defwidget laptopactions []
+  (eventbox :onhover "eww update showOp=true" :onhoverlost "eww update showOp=false"
+     (box :space-evenly false
+       (revealer :reveal showOp :transition "slideright"
+         (box :space-evenly false :spacing "4"
+           (button :class "action logout" :onclick "uwsm stop" "󰗽")
+           (button :class "action lock" :onclick "echo x" "")
+           (button :class "action sleep" :onclick "systemctl sleep" "󰤄")))
+       (button :class "action poweroff" :onclick "shutdown -h now" ""))))
+
+(defwindow topbar
+  :monitor "[1,0]"
+  :stacking "bg"
+  :geometry (geometry
+              :x "0%"
+              :y "12px"
+              :width "100%"
+              :height "34px"
+              :anchor "top center")
+  :exclusive true
+  (centerbox :orientation "h" :class "container"
+    (box :halign "start" 
+         :spacing "4"
+         :space-evenly false
+         :orientation "h"
+      (workspaces)
+      (systray :class "trayicons" :spacing "10" :icon-size "14"))
+    (box :halign "center"
+      (label :class "win-title" :text " ${currentWindowTitle} "))
+    (box :halign "end"
+         :space-evenly false
+      (eventbox :onhover "eww update showVolume=true" :onhoverlost "eww update showVolume=false"
+        (box :orientation "h" :class "action-container" :space-evenly false
+          (button :class "action volume" "${volume}% 󰕾")
+          (revealer :reveal showVolume :transition "slideright"
+            (scale :min 0
+                   :max 101
+                   :width "100"
+                   :value volume
+                   :flipped true
+                   :orientation "h" 
+                   :class "slider-scale" 
+                   :onchange "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ {}% && eww update volume={}"))))
+      (label 
+        :class "battery"
+        :text "${EWW_BATTERY.BAT0.capacity}% ${EWW_BATTERY.BAT0.status == 'Discharging' ? '󱊣' : '󱊦'}")
+      (label :text "${time} " :class "time")
+      (laptopactions ))))
+

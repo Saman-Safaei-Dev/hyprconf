@@ -1,0 +1,55 @@
+#!/bin/node
+
+import { execSync, spawn } from "node:child_process";
+
+const env = {
+  ...process.env,
+  XDG_RUNTIME_DIR: process.env.XDG_RUNTIME_DIR,
+  HYPRLAND_INSTANCE_SIGNATURE: process.env.HYPRLAND_INSTANCE_SIGNATURE,
+};
+
+const socketPath = `${env.XDG_RUNTIME_DIR}/hypr/${env.HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock`;
+
+const socat = spawn("/bin/socat", ["-u", `UNIX-CONNECT:${socketPath}`, "-"], {
+  env,
+});
+
+socat.on("spawn", () => {
+  const workspaces = JSON.parse(execSync("hyprctl -j workspaces").toString());
+  const activeWorkspace = JSON.parse(
+    execSync("hyprctl -j activeworkspace").toString(),
+  ).id;
+
+  let items = workspaces.map((workspace) => ({
+    id: workspace.id,
+    name: workspace.name,
+    active: workspace.id == activeWorkspace,
+  }));
+
+  items = items.sort((a, b) => +a.id - +b.id);
+
+  console.log(JSON.stringify(items));
+});
+
+socat.stdout.on("data", (data) => {
+  const lines = data
+    .toString()
+    .split("\n")
+    .filter((line) => !!line.trim());
+
+  const workspaceLine = lines.find((line) => line.startsWith("workspace>>"));
+  if (!workspaceLine) return;
+
+  const workspaces = JSON.parse(execSync("hyprctl -j workspaces").toString());
+  const activeWorkspace = workspaceLine.split(">>")[1];
+
+  let items = workspaces.map((workspace) => ({
+    id: workspace.id,
+    name: workspace.name,
+    active: workspace.id == activeWorkspace,
+  }));
+
+  items = items.sort((a, b) => +a.id - +b.id);
+
+  console.log(JSON.stringify(items));
+});

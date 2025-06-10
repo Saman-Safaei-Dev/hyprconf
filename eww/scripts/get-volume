@@ -1,0 +1,14 @@
+#!/bin/node
+
+import { execSync } from "child_process";
+
+const volume = Math.floor(
+  Number(
+    execSync("wpctl get-volume @DEFAULT_AUDIO_SINK@")
+      .toString()
+      .trim()
+      .split(" ")[1],
+  ) * 100,
+);
+
+console.log(volume);
