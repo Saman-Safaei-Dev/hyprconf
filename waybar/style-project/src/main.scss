@@ -33,8 +33,8 @@ $crust: #11111b;
 
 tooltip {
   border-radius: 8px;
-  background-color: rgba($base, 0.9);
-  border: 1px solid rgba($surface0, 0.9);
+  background-color: $base;
+  border: 1px solid $surface0;
 }
 
 tooltip,
@@ -52,48 +52,49 @@ tooltip label {
 menu {
   padding: 8px;
   color: $text;
-  background: rgba($base, 0.9);
-  border-radius: 8px;
+  background: rgba($base, 0.7);
 }
 
 separator {
-  background: rgba($surface0, 0.9);
+  background: $surface0;
 }
 
 window#waybar {
   background: transparent;
 
   & > box {
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-top: 12px;
-    padding-left: 0;
-    padding-right: 0;
     background: rgba($base, 0.8);
-    border-radius: 8px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 
     #workspaces {
-      padding: 2px;
-      border-radius: 8px;
-      margin-left: 4px;
-      background: rgba($mauve, 0.9);
-
       button {
         padding: 0;
-        color: $base;
-        font-weight: 700;
+        color: $text;
+        font-weight: 400;
         border-radius: 6px;
         padding-right: 2px;
         padding-left: 2px;
 
         &.active {
-          color: $text;
-          background: $surface0;
+          color: $mauve;
+          font-weight: 700;
         }
       }
     }
+
+    #custom-hsp {
+      color: $text;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    #custom-lhsp {
+      color: $text;
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+
 
     #tray,
     #clock,
@@ -106,78 +107,60 @@ window#waybar {
 
     #custom-arch {
       color: $sky;
-      padding-left: 8px;
-      padding-right: 8px;
-      border-radius: 6px;
-      margin-left: 6px;
-      background: rgba($surface0, 0.9);
+      margin-left: 12px;
+      padding: 3px 0;
     }
 
-    #tray {
-      margin-left: 4px;
-      background: rgba($surface0, 0.9);
-      border-radius: 6px;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-
-    #window {
-      margin-left: 14px;
-      font-weight: 700;
-    }
-
-    #custom-lock,
     #custom-logout,
     #custom-poweroff,
     #power-profiles-daemon {
-      color: $base;
-      border-radius: 6px;
       margin-right: 4px;
     }
 
-    #custom-lock,
     #custom-logout,
     #custom-poweroff {
-      padding: 0 9px;
+      padding: 0 5px;
     }
 
     #custom-poweroff {
-      background: rgba($red, 0.9);
-      margin-right: 6px;
-    }
-
-    #custom-lock {
-      background: rgba($blue, 0.9);
+      color: $red;
+      margin-right: 12px;
     }
 
     #custom-logout {
-      background: rgba($maroon, 0.9);
+      color: $maroon;
     }
 
     #power-profiles-daemon.power-saver {
-      background: rgba($green, 0.9);
-      padding: 0 10px;
+      color: $green;
+      padding: 0 6px;
     }
 
     #power-profiles-daemon.balanced {
-      background: rgba($sky, 0.9);
-      padding: 0 8px;
+      color: $sky;
+      padding: 0 4px;
     }
 
     #power-profiles-daemon.performance {
-      background: rgba($yellow, 0.9);
-      padding: 0 11px;
+      color: $yellow;
+      padding: 0 7px;
     }
 
-    #clock,
     #battery,
     #backlight,
     #pulseaudio {
-      background: rgba($surface0, 0.9);
-      margin-right: 4px;
-      border-radius: 6px;
-      padding-left: 6px;
-      padding-right: 6px;
+      margin-right: 14px;
     }
+  }
+
+  #taskbar button {
+    padding: 2px 6px;
+  }
+  #taskbar button:active,
+  #taskbar button:hover {
+    background: transparent;
+  }
+  #taskbar button.active {
+    background: rgba($text, 0.2);
   }
 }

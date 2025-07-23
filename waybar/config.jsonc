@@ -1,28 +1,43 @@
 {
-  "layer": "top",
-  "position": "top",
+  "layer": "bottom",
+  "position": "bottom",
   "output": ["HDMI-A-1", "eDP-1"],
   "modules-right": [
+    "tray",
+    "custom/lhsp",
     "backlight",
     "pulseaudio",
     "battery",
     "clock",
+    "custom/lhsp",
     "power-profiles-daemon",
     "custom/logout",
-    "custom/lock",
     "custom/poweroff"
   ],
   "modules-left": [
     "custom/arch", 
-    "hyprland/workspaces", 
-    "tray", 
-    "hyprland/window"
+    "custom/hsp",
+    "hyprland/workspaces",  
+    "custom/hsp",
+    "wlr/taskbar"
   ],
-  "custom/lock": {
+  "wlr/taskbar": {
+    "icon-size": 15,
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "tooltip-format": "{title}",
+    "format": "{icon}",
+    "icon-theme": "Qogir-dark"
+  },
+  "custom/hsp": {
+    "format": "",
     "tooltip": false,
-    "interval": "once",
-    "on-click": "pidof hyprlock || hyprlock",
-    "format": "\uf023"
+    "interval": "once"
+  },
+  "custom/lhsp": {
+    "format": "",
+    "tooltip": false,
+    "interval": "once"
   },
   "custom/logout": {
     "tooltip": false,
@@ -38,7 +53,7 @@
   },
   "tray": {
     "spacing": 10,
-    "icon-size": 14
+    "icon-size": 12
   },
   "clock": {
     "format": "{:%H:%M} ",
